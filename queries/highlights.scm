@@ -1,9 +1,35 @@
 ; Keywords
-"struct" @keyword
+"egg" @keyword
+"rock" @keyword
 "fun" @keyword
-"yes" @constant.builtin
-"no" @constant.builtin
-"nil" @constant.builtin
+"type" @keyword
+"struct" @keyword
+"enum" @keyword
+"int" @keyword
+"float" @keyword
+"string" @keyword
+"bool" @keyword
+"thing" @keyword
+"map" @keyword
+
+"ayla" @keyword
+"elen" @keyword
+"four" @keyword
+"why" @keyword
+"back" @keyword
+"kitkat" @keyword
+"next" @keyword
+"decide" @keyword
+"when" @keyword
+"otherwise" @keyword
+"spawn" @keyword
+"with" @keyword
+"it" @keyword
+"in" @keyword
+"range" @keyword
+
+(boolean) @constant.builtin
+(nil) @constant.builtin
 
 ; Types
 (type_identifier) @type
