@@ -40,8 +40,40 @@ module.exports = grammar({
 
     block: ($) => seq("{", repeat($._statement), "}"),
 
+    keyword: ($) =>
+      choice(
+        "egg",
+        "rock",
+        "fun",
+        "type",
+        "struct",
+        "enum",
+        "int",
+        "float",
+        "string",
+        "bool",
+        "thing",
+        "map",
+        "ayla",
+        "elen",
+        "four",
+        "why",
+        "back",
+        "kitkat",
+        "next",
+        "decide",
+        "when",
+        "otherwise",
+        "spawn",
+        "with",
+        "it",
+        "in",
+        "range",
+      ),
+
     expression: ($) =>
       choice(
+        $.keyword,
         $.call_expression,
         $.member_expression,
         $.identifier,
