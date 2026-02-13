@@ -203,9 +203,114 @@
         }
       ]
     },
+    "keyword": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "egg"
+        },
+        {
+          "type": "STRING",
+          "value": "rock"
+        },
+        {
+          "type": "STRING",
+          "value": "enum"
+        },
+        {
+          "type": "STRING",
+          "value": "int"
+        },
+        {
+          "type": "STRING",
+          "value": "float"
+        },
+        {
+          "type": "STRING",
+          "value": "string"
+        },
+        {
+          "type": "STRING",
+          "value": "bool"
+        },
+        {
+          "type": "STRING",
+          "value": "thing"
+        },
+        {
+          "type": "STRING",
+          "value": "map"
+        },
+        {
+          "type": "STRING",
+          "value": "ayla"
+        },
+        {
+          "type": "STRING",
+          "value": "elen"
+        },
+        {
+          "type": "STRING",
+          "value": "four"
+        },
+        {
+          "type": "STRING",
+          "value": "why"
+        },
+        {
+          "type": "STRING",
+          "value": "back"
+        },
+        {
+          "type": "STRING",
+          "value": "kitkat"
+        },
+        {
+          "type": "STRING",
+          "value": "next"
+        },
+        {
+          "type": "STRING",
+          "value": "decide"
+        },
+        {
+          "type": "STRING",
+          "value": "when"
+        },
+        {
+          "type": "STRING",
+          "value": "otherwise"
+        },
+        {
+          "type": "STRING",
+          "value": "spawn"
+        },
+        {
+          "type": "STRING",
+          "value": "with"
+        },
+        {
+          "type": "STRING",
+          "value": "it"
+        },
+        {
+          "type": "STRING",
+          "value": "in"
+        },
+        {
+          "type": "STRING",
+          "value": "range"
+        }
+      ]
+    },
     "expression": {
       "type": "CHOICE",
       "members": [
+        {
+          "type": "SYMBOL",
+          "name": "keyword"
+        },
         {
           "type": "SYMBOL",
           "name": "call_expression"

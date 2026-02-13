@@ -44,9 +44,6 @@ module.exports = grammar({
       choice(
         "egg",
         "rock",
-        "fun",
-        "type",
-        "struct",
         "enum",
         "int",
         "float",
