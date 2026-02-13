@@ -8,11 +8,15 @@ module.exports = grammar({
   rules: {
     source_file: ($) => repeat($._statement),
 
-    _statement: ($) => choice($.struct_decl, $.function_decl, $.expression),
+    _statement: ($) =>
+      choice($.struct_decl, $.function_decl, $.expression, $.assignment),
+
+    assignment: ($) =>
+      seq(field("left", $.identifier), "=", field("right", $.expression)),
 
     struct_decl: ($) =>
       seq(
-        "struct",
+        field("keyword", "struct"),
         field("name", $.type_identifier),
         "{",
         repeat($.struct_field),
@@ -24,7 +28,7 @@ module.exports = grammar({
 
     function_decl: ($) =>
       seq(
-        "fun",
+        field("keyword", "fun"),
         field("name", $.identifier),
         "(",
         optional($.parameter_list),
@@ -51,7 +55,13 @@ module.exports = grammar({
       seq(field("function", $.identifier), "(", optional($.argument_list), ")"),
 
     member_expression: ($) =>
-      seq($.expression, ".", field("property", $.identifier)),
+      prec.left(
+        seq(
+          field("object", $.expression),
+          ".",
+          field("property", $.identifier),
+        ),
+      ),
 
     argument_list: ($) => seq($.expression, repeat(seq(",", $.expression))),
 
