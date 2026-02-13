@@ -1,4 +1,5 @@
 (identifier) @variable
+(number) @number
 
 ; ; Keywords
 ; "struct" @keyword
