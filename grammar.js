@@ -24,7 +24,10 @@ module.exports = grammar({
       ),
 
     struct_field: ($) =>
-      seq(field("name", $.identifier), field("type", $.type_identifier)),
+      seq(
+        field("name", $.identifier),
+        field("type", choice($.type_identifier, $.primitive_type)),
+      ),
 
     parameter_list: ($) => seq($.identifier, repeat(seq(",", $.identifier))),
 
@@ -104,12 +107,6 @@ module.exports = grammar({
           ".",
           field("property", $.identifier),
         ),
-      ),
-
-    struct_field: ($) =>
-      seq(
-        field("name", $.identifier),
-        field("type", choice($.type_identifier, $.primitive_type)),
       ),
 
     argument_list: ($) => seq($.expression, repeat(seq(",", $.expression))),
