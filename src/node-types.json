@@ -149,6 +149,16 @@
     "type": "function_decl",
     "named": true,
     "fields": {
+      "keyword": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "fun",
+            "named": false
+          }
+        ]
+      },
       "name": {
         "multiple": false,
         "required": true,

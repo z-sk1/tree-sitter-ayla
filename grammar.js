@@ -44,7 +44,7 @@ module.exports = grammar({
 
     function_decl: ($) =>
       seq(
-        "fun",
+        field("keyword", "fun"),
         optional(field("receiver", $.receiver)),
         field("name", $.identifier),
         "(",
