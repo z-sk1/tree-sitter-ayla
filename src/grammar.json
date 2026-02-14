@@ -107,8 +107,17 @@
           "type": "FIELD",
           "name": "type",
           "content": {
-            "type": "SYMBOL",
-            "name": "type_identifier"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "type_identifier"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "primitive_type"
+              }
+            ]
           }
         }
       ]
@@ -220,27 +229,11 @@
         },
         {
           "type": "STRING",
-          "value": "int"
-        },
-        {
-          "type": "STRING",
-          "value": "float"
-        },
-        {
-          "type": "STRING",
-          "value": "string"
-        },
-        {
-          "type": "STRING",
-          "value": "bool"
-        },
-        {
-          "type": "STRING",
-          "value": "thing"
-        },
-        {
-          "type": "STRING",
           "value": "map"
+        },
+        {
+          "type": "STRING",
+          "value": "type"
         },
         {
           "type": "STRING",
@@ -304,12 +297,45 @@
         }
       ]
     },
+    "primitive_type": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "int"
+        },
+        {
+          "type": "STRING",
+          "value": "float"
+        },
+        {
+          "type": "STRING",
+          "value": "string"
+        },
+        {
+          "type": "STRING",
+          "value": "bool"
+        },
+        {
+          "type": "STRING",
+          "value": "thing"
+        },
+        {
+          "type": "STRING",
+          "value": "error"
+        }
+      ]
+    },
     "expression": {
       "type": "CHOICE",
       "members": [
         {
           "type": "SYMBOL",
           "name": "keyword"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "primitive_type"
         },
         {
           "type": "SYMBOL",

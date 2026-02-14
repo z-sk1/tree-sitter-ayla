@@ -135,6 +135,10 @@
           "named": true
         },
         {
+          "type": "primitive_type",
+          "named": true
+        },
+        {
           "type": "string",
           "named": true
         }
@@ -228,6 +232,11 @@
     }
   },
   {
+    "type": "primitive_type",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "source_file",
     "named": true,
     "root": true,
@@ -310,6 +319,10 @@
         "required": true,
         "types": [
           {
+            "type": "primitive_type",
+            "named": true
+          },
+          {
             "type": "type_identifier",
             "named": true
           }
@@ -368,6 +381,10 @@
   },
   {
     "type": "enum",
+    "named": false
+  },
+  {
+    "type": "error",
     "named": false
   },
   {
@@ -452,6 +469,10 @@
   },
   {
     "type": "thing",
+    "named": false
+  },
+  {
+    "type": "type",
     "named": false
   },
   {

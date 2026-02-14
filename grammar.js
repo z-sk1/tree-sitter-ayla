@@ -45,12 +45,8 @@ module.exports = grammar({
         "egg",
         "rock",
         "enum",
-        "int",
-        "float",
-        "string",
-        "bool",
-        "thing",
         "map",
+        "type",
         "ayla",
         "elen",
         "four",
@@ -68,9 +64,13 @@ module.exports = grammar({
         "range",
       ),
 
+    primitive_type: ($) =>
+      choice("int", "float", "string", "bool", "thing", "error"),
+
     expression: ($) =>
       choice(
         $.keyword,
+        $.primitive_type,
         $.call_expression,
         $.member_expression,
         $.identifier,
@@ -90,6 +90,12 @@ module.exports = grammar({
           ".",
           field("property", $.identifier),
         ),
+      ),
+
+    struct_field: ($) =>
+      seq(
+        field("name", $.identifier),
+        field("type", choice($.type_identifier, $.primitive_type)),
       ),
 
     argument_list: ($) => seq($.expression, repeat(seq(",", $.expression))),
