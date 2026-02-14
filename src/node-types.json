@@ -119,10 +119,6 @@
           "named": true
         },
         {
-          "type": "keyword",
-          "named": true
-        },
-        {
           "type": "member_expression",
           "named": true
         },
@@ -204,11 +200,6 @@
         }
       ]
     }
-  },
-  {
-    "type": "keyword",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "member_expression",
@@ -421,14 +412,6 @@
     "named": false
   },
   {
-    "type": "ayla",
-    "named": false
-  },
-  {
-    "type": "back",
-    "named": false
-  },
-  {
     "type": "bool",
     "named": false
   },
@@ -438,31 +421,11 @@
     "extra": true
   },
   {
-    "type": "decide",
-    "named": false
-  },
-  {
-    "type": "egg",
-    "named": false
-  },
-  {
-    "type": "elen",
-    "named": false
-  },
-  {
-    "type": "enum",
-    "named": false
-  },
-  {
     "type": "error",
     "named": false
   },
   {
     "type": "float",
-    "named": false
-  },
-  {
-    "type": "four",
     "named": false
   },
   {
@@ -474,27 +437,7 @@
     "named": true
   },
   {
-    "type": "in",
-    "named": false
-  },
-  {
     "type": "int",
-    "named": false
-  },
-  {
-    "type": "it",
-    "named": false
-  },
-  {
-    "type": "kitkat",
-    "named": false
-  },
-  {
-    "type": "map",
-    "named": false
-  },
-  {
-    "type": "next",
     "named": false
   },
   {
@@ -508,22 +451,6 @@
   {
     "type": "number",
     "named": true
-  },
-  {
-    "type": "otherwise",
-    "named": false
-  },
-  {
-    "type": "range",
-    "named": false
-  },
-  {
-    "type": "rock",
-    "named": false
-  },
-  {
-    "type": "spawn",
-    "named": false
   },
   {
     "type": "string",
@@ -542,24 +469,8 @@
     "named": false
   },
   {
-    "type": "type",
-    "named": false
-  },
-  {
     "type": "type_identifier",
     "named": true
-  },
-  {
-    "type": "when",
-    "named": false
-  },
-  {
-    "type": "why",
-    "named": false
-  },
-  {
-    "type": "with",
-    "named": false
   },
   {
     "type": "yes",
