@@ -61,7 +61,6 @@ module.exports = grammar({
         "egg",
         "rock",
         "enum",
-        "fun",
         "struct",
         "map",
         "type",
