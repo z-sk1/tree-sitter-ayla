@@ -86,7 +86,7 @@ module.exports = grammar({
 
     expression: ($) =>
       choice(
-        // $.keyword,
+        $.keyword,
         $.primitive_type,
         $.call_expression,
         $.member_expression,
