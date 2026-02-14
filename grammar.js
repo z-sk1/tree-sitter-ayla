@@ -56,37 +56,37 @@ module.exports = grammar({
 
     block: ($) => seq("{", repeat($._statement), "}"),
 
-    keyword: ($) =>
-      choice(
-        "egg",
-        "rock",
-        "enum",
-        "struct",
-        "map",
-        "type",
-        "ayla",
-        "elen",
-        "four",
-        "why",
-        "back",
-        "kitkat",
-        "next",
-        "decide",
-        "when",
-        "otherwise",
-        "spawn",
-        "with",
-        "it",
-        "in",
-        "range",
-      ),
+    // keyword: ($) =>
+    //   choice(
+    //     "egg",
+    //     "rock",
+    //     "enum",
+    //     "struct",
+    //     "map",
+    //     "type",
+    //     "ayla",
+    //     "elen",
+    //     "four",
+    //     "why",
+    //     "back",
+    //     "kitkat",
+    //     "next",
+    //     "decide",
+    //     "when",
+    //     "otherwise",
+    //     "spawn",
+    //     "with",
+    //     "it",
+    //     "in",
+    //     "range",
+    //   ),
 
     primitive_type: ($) =>
       choice("int", "float", "string", "bool", "thing", "error"),
 
     expression: ($) =>
       choice(
-        $.keyword,
+        // $.keyword,
         $.primitive_type,
         $.call_expression,
         $.member_expression,
