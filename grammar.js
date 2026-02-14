@@ -54,7 +54,8 @@ module.exports = grammar({
         $.block,
       ),
 
-    block: ($) => seq("{", repeat($._statement), "}"),
+    block: ($) =>
+      seq(field("open", "{"), repeat($._statement), field("close", "}")),
 
     keyword: ($) =>
       choice(
