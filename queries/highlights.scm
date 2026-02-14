@@ -28,6 +28,19 @@
 (call_expression
   function: (identifier) @function.call)
 
+(receiver
+  name: (identifier) @variable.parameter)
+
+(receiver
+  type: (type_identifier) @type)
+
+(return_type
+  type: (type_identifier) @type)
+
+(return_type
+  type: (primitive_type) @type.builtin)
+
+
 ; Variables
 (identifier) @variable
 (member_expression

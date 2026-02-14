@@ -26,17 +26,30 @@ module.exports = grammar({
     struct_field: ($) =>
       seq(field("name", $.identifier), field("type", $.type_identifier)),
 
+    parameter_list: ($) => seq($.identifier, repeat(seq(",", $.identifier))),
+
+    receiver: ($) =>
+      seq(
+        "(",
+        field("name", $.identifier),
+        field("type", choice($.type_identifier, $.primitive_type)),
+        ")",
+      ),
+
+    return_type: ($) =>
+      seq("(", field("type", choice($.type_identifier, $.primitive_type)), ")"),
+
     function_decl: ($) =>
       seq(
-        field("keyword", "fun"),
+        "fun",
+        optional(field("receiver", $.receiver)),
         field("name", $.identifier),
         "(",
         optional($.parameter_list),
         ")",
+        optional(field("return_type", $.return_type)),
         $.block,
       ),
-
-    parameter_list: ($) => seq($.identifier, repeat(seq(",", $.identifier))),
 
     block: ($) => seq("{", repeat($._statement), "}"),
 
@@ -45,6 +58,7 @@ module.exports = grammar({
         "egg",
         "rock",
         "enum",
+        "struct",
         "map",
         "type",
         "ayla",
