@@ -29,7 +29,13 @@ module.exports = grammar({
         field("type", choice($.type_identifier, $.primitive_type)),
       ),
 
-    parameter_list: ($) => seq($.identifier, repeat(seq(",", $.identifier))),
+    parameter: ($) =>
+      seq(
+        field("name", $.identifier),
+        optional(field("type", choice($.type_identifier, $.primitive_type))),
+      ),
+
+    parameter_list: ($) => seq($.parameter, repeat(seq(",", $.parameter))),
 
     receiver: ($) =>
       seq(
