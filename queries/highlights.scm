@@ -1,3 +1,8 @@
+; Variables
+(identifier) @variable
+(member_expression
+  property: (identifier) @variable.other.member)
+
 (keyword) @keyword
 
 (boolean) @constant.builtin
@@ -20,10 +25,21 @@
 (struct_field
   type: (primitive_type) @type.builtin)
 
-
 ; Functions
 (function_decl
+  "fun" @keyword)
+
+(function_decl
   name: (identifier) @function.definition)
+
+(parameter
+    name: (identifier) @variable.parameter)
+
+(parameter
+    type: (primitive_type) @type.builtin)
+
+(parameter
+    type: (type_identifier) @type)
 
 (call_expression
   function: (identifier) @function.call)
@@ -39,12 +55,6 @@
 
 (return_type
   type: (primitive_type) @type.builtin)
-
-
-; Variables
-(identifier) @variable
-(member_expression
-  property: (identifier) @variable.other.member)
 
 ; Literals
 (string) @string

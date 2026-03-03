@@ -41,7 +41,7 @@ enum ts_symbol_identifiers {
   anon_sym_back = 19,
   anon_sym_kitkat = 20,
   anon_sym_next = 21,
-  anon_sym_decide = 22,
+  anon_sym_choose = 22,
   anon_sym_when = 23,
   anon_sym_otherwise = 24,
   anon_sym_spawn = 25,
@@ -110,7 +110,7 @@ static const char * const ts_symbol_names[] = {
   [anon_sym_back] = "back",
   [anon_sym_kitkat] = "kitkat",
   [anon_sym_next] = "next",
-  [anon_sym_decide] = "decide",
+  [anon_sym_choose] = "choose",
   [anon_sym_when] = "when",
   [anon_sym_otherwise] = "otherwise",
   [anon_sym_spawn] = "spawn",
@@ -179,7 +179,7 @@ static const TSSymbol ts_symbol_map[] = {
   [anon_sym_back] = anon_sym_back,
   [anon_sym_kitkat] = anon_sym_kitkat,
   [anon_sym_next] = anon_sym_next,
-  [anon_sym_decide] = anon_sym_decide,
+  [anon_sym_choose] = anon_sym_choose,
   [anon_sym_when] = anon_sym_when,
   [anon_sym_otherwise] = anon_sym_otherwise,
   [anon_sym_spawn] = anon_sym_spawn,
@@ -314,7 +314,7 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = true,
     .named = false,
   },
-  [anon_sym_decide] = {
+  [anon_sym_choose] = {
     .visible = true,
     .named = false,
   },
@@ -787,7 +787,7 @@ static bool ts_lex_keywords(TSLexer *lexer, TSStateId state) {
       ADVANCE_MAP(
         'a', 1,
         'b', 2,
-        'd', 3,
+        'c', 3,
         'e', 4,
         'f', 5,
         'i', 6,
@@ -812,7 +812,7 @@ static bool ts_lex_keywords(TSLexer *lexer, TSStateId state) {
       if (lookahead == 'o') ADVANCE(18);
       END_STATE();
     case 3:
-      if (lookahead == 'e') ADVANCE(19);
+      if (lookahead == 'h') ADVANCE(19);
       END_STATE();
     case 4:
       if (lookahead == 'g') ADVANCE(20);
@@ -872,7 +872,7 @@ static bool ts_lex_keywords(TSLexer *lexer, TSStateId state) {
       if (lookahead == 'o') ADVANCE(46);
       END_STATE();
     case 19:
-      if (lookahead == 'c') ADVANCE(47);
+      if (lookahead == 'o') ADVANCE(47);
       END_STATE();
     case 20:
       if (lookahead == 'g') ADVANCE(48);
@@ -958,7 +958,7 @@ static bool ts_lex_keywords(TSLexer *lexer, TSStateId state) {
       if (lookahead == 'l') ADVANCE(73);
       END_STATE();
     case 47:
-      if (lookahead == 'i') ADVANCE(74);
+      if (lookahead == 'o') ADVANCE(74);
       END_STATE();
     case 48:
       ACCEPT_TOKEN(anon_sym_egg);
@@ -1040,7 +1040,7 @@ static bool ts_lex_keywords(TSLexer *lexer, TSStateId state) {
       ACCEPT_TOKEN(anon_sym_bool);
       END_STATE();
     case 74:
-      if (lookahead == 'd') ADVANCE(92);
+      if (lookahead == 's') ADVANCE(92);
       END_STATE();
     case 75:
       ACCEPT_TOKEN(anon_sym_elen);
@@ -1124,7 +1124,7 @@ static bool ts_lex_keywords(TSLexer *lexer, TSStateId state) {
       ACCEPT_TOKEN(anon_sym_thing);
       END_STATE();
     case 102:
-      ACCEPT_TOKEN(anon_sym_decide);
+      ACCEPT_TOKEN(anon_sym_choose);
       END_STATE();
     case 103:
       ACCEPT_TOKEN(anon_sym_kitkat);
@@ -1255,7 +1255,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_back] = ACTIONS(1),
     [anon_sym_kitkat] = ACTIONS(1),
     [anon_sym_next] = ACTIONS(1),
-    [anon_sym_decide] = ACTIONS(1),
+    [anon_sym_choose] = ACTIONS(1),
     [anon_sym_when] = ACTIONS(1),
     [anon_sym_otherwise] = ACTIONS(1),
     [anon_sym_spawn] = ACTIONS(1),
@@ -1307,7 +1307,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_back] = ACTIONS(13),
     [anon_sym_kitkat] = ACTIONS(13),
     [anon_sym_next] = ACTIONS(13),
-    [anon_sym_decide] = ACTIONS(13),
+    [anon_sym_choose] = ACTIONS(13),
     [anon_sym_when] = ACTIONS(13),
     [anon_sym_otherwise] = ACTIONS(13),
     [anon_sym_spawn] = ACTIONS(13),
@@ -1357,7 +1357,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_back] = ACTIONS(34),
     [anon_sym_kitkat] = ACTIONS(34),
     [anon_sym_next] = ACTIONS(34),
-    [anon_sym_decide] = ACTIONS(34),
+    [anon_sym_choose] = ACTIONS(34),
     [anon_sym_when] = ACTIONS(34),
     [anon_sym_otherwise] = ACTIONS(34),
     [anon_sym_spawn] = ACTIONS(34),
@@ -1406,7 +1406,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_back] = ACTIONS(13),
     [anon_sym_kitkat] = ACTIONS(13),
     [anon_sym_next] = ACTIONS(13),
-    [anon_sym_decide] = ACTIONS(13),
+    [anon_sym_choose] = ACTIONS(13),
     [anon_sym_when] = ACTIONS(13),
     [anon_sym_otherwise] = ACTIONS(13),
     [anon_sym_spawn] = ACTIONS(13),
@@ -1455,7 +1455,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_back] = ACTIONS(13),
     [anon_sym_kitkat] = ACTIONS(13),
     [anon_sym_next] = ACTIONS(13),
-    [anon_sym_decide] = ACTIONS(13),
+    [anon_sym_choose] = ACTIONS(13),
     [anon_sym_when] = ACTIONS(13),
     [anon_sym_otherwise] = ACTIONS(13),
     [anon_sym_spawn] = ACTIONS(13),
@@ -1504,7 +1504,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_back] = ACTIONS(13),
     [anon_sym_kitkat] = ACTIONS(13),
     [anon_sym_next] = ACTIONS(13),
-    [anon_sym_decide] = ACTIONS(13),
+    [anon_sym_choose] = ACTIONS(13),
     [anon_sym_when] = ACTIONS(13),
     [anon_sym_otherwise] = ACTIONS(13),
     [anon_sym_spawn] = ACTIONS(13),
@@ -1548,7 +1548,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_back] = ACTIONS(13),
     [anon_sym_kitkat] = ACTIONS(13),
     [anon_sym_next] = ACTIONS(13),
-    [anon_sym_decide] = ACTIONS(13),
+    [anon_sym_choose] = ACTIONS(13),
     [anon_sym_when] = ACTIONS(13),
     [anon_sym_otherwise] = ACTIONS(13),
     [anon_sym_spawn] = ACTIONS(13),
@@ -1590,7 +1590,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_back] = ACTIONS(61),
     [anon_sym_kitkat] = ACTIONS(61),
     [anon_sym_next] = ACTIONS(61),
-    [anon_sym_decide] = ACTIONS(61),
+    [anon_sym_choose] = ACTIONS(61),
     [anon_sym_when] = ACTIONS(61),
     [anon_sym_otherwise] = ACTIONS(61),
     [anon_sym_spawn] = ACTIONS(61),
@@ -1632,7 +1632,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_back] = ACTIONS(61),
     [anon_sym_kitkat] = ACTIONS(61),
     [anon_sym_next] = ACTIONS(61),
-    [anon_sym_decide] = ACTIONS(61),
+    [anon_sym_choose] = ACTIONS(61),
     [anon_sym_when] = ACTIONS(61),
     [anon_sym_otherwise] = ACTIONS(61),
     [anon_sym_spawn] = ACTIONS(61),
@@ -1674,7 +1674,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_back] = ACTIONS(69),
     [anon_sym_kitkat] = ACTIONS(69),
     [anon_sym_next] = ACTIONS(69),
-    [anon_sym_decide] = ACTIONS(69),
+    [anon_sym_choose] = ACTIONS(69),
     [anon_sym_when] = ACTIONS(69),
     [anon_sym_otherwise] = ACTIONS(69),
     [anon_sym_spawn] = ACTIONS(69),
@@ -1717,7 +1717,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_back] = ACTIONS(13),
     [anon_sym_kitkat] = ACTIONS(13),
     [anon_sym_next] = ACTIONS(13),
-    [anon_sym_decide] = ACTIONS(13),
+    [anon_sym_choose] = ACTIONS(13),
     [anon_sym_when] = ACTIONS(13),
     [anon_sym_otherwise] = ACTIONS(13),
     [anon_sym_spawn] = ACTIONS(13),
@@ -1758,7 +1758,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_back] = ACTIONS(61),
     [anon_sym_kitkat] = ACTIONS(61),
     [anon_sym_next] = ACTIONS(61),
-    [anon_sym_decide] = ACTIONS(61),
+    [anon_sym_choose] = ACTIONS(61),
     [anon_sym_when] = ACTIONS(61),
     [anon_sym_otherwise] = ACTIONS(61),
     [anon_sym_spawn] = ACTIONS(61),
@@ -1800,7 +1800,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_back] = ACTIONS(73),
     [anon_sym_kitkat] = ACTIONS(73),
     [anon_sym_next] = ACTIONS(73),
-    [anon_sym_decide] = ACTIONS(73),
+    [anon_sym_choose] = ACTIONS(73),
     [anon_sym_when] = ACTIONS(73),
     [anon_sym_otherwise] = ACTIONS(73),
     [anon_sym_spawn] = ACTIONS(73),
@@ -1842,7 +1842,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_back] = ACTIONS(77),
     [anon_sym_kitkat] = ACTIONS(77),
     [anon_sym_next] = ACTIONS(77),
-    [anon_sym_decide] = ACTIONS(77),
+    [anon_sym_choose] = ACTIONS(77),
     [anon_sym_when] = ACTIONS(77),
     [anon_sym_otherwise] = ACTIONS(77),
     [anon_sym_spawn] = ACTIONS(77),
@@ -1885,7 +1885,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_back] = ACTIONS(13),
     [anon_sym_kitkat] = ACTIONS(13),
     [anon_sym_next] = ACTIONS(13),
-    [anon_sym_decide] = ACTIONS(13),
+    [anon_sym_choose] = ACTIONS(13),
     [anon_sym_when] = ACTIONS(13),
     [anon_sym_otherwise] = ACTIONS(13),
     [anon_sym_spawn] = ACTIONS(13),
@@ -1926,7 +1926,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_back] = ACTIONS(81),
     [anon_sym_kitkat] = ACTIONS(81),
     [anon_sym_next] = ACTIONS(81),
-    [anon_sym_decide] = ACTIONS(81),
+    [anon_sym_choose] = ACTIONS(81),
     [anon_sym_when] = ACTIONS(81),
     [anon_sym_otherwise] = ACTIONS(81),
     [anon_sym_spawn] = ACTIONS(81),
@@ -1968,7 +1968,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_back] = ACTIONS(85),
     [anon_sym_kitkat] = ACTIONS(85),
     [anon_sym_next] = ACTIONS(85),
-    [anon_sym_decide] = ACTIONS(85),
+    [anon_sym_choose] = ACTIONS(85),
     [anon_sym_when] = ACTIONS(85),
     [anon_sym_otherwise] = ACTIONS(85),
     [anon_sym_spawn] = ACTIONS(85),
@@ -2010,7 +2010,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_back] = ACTIONS(89),
     [anon_sym_kitkat] = ACTIONS(89),
     [anon_sym_next] = ACTIONS(89),
-    [anon_sym_decide] = ACTIONS(89),
+    [anon_sym_choose] = ACTIONS(89),
     [anon_sym_when] = ACTIONS(89),
     [anon_sym_otherwise] = ACTIONS(89),
     [anon_sym_spawn] = ACTIONS(89),
@@ -2050,7 +2050,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_back] = ACTIONS(77),
     [anon_sym_kitkat] = ACTIONS(77),
     [anon_sym_next] = ACTIONS(77),
-    [anon_sym_decide] = ACTIONS(77),
+    [anon_sym_choose] = ACTIONS(77),
     [anon_sym_when] = ACTIONS(77),
     [anon_sym_otherwise] = ACTIONS(77),
     [anon_sym_spawn] = ACTIONS(77),
@@ -2091,7 +2091,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_back] = ACTIONS(95),
     [anon_sym_kitkat] = ACTIONS(95),
     [anon_sym_next] = ACTIONS(95),
-    [anon_sym_decide] = ACTIONS(95),
+    [anon_sym_choose] = ACTIONS(95),
     [anon_sym_when] = ACTIONS(95),
     [anon_sym_otherwise] = ACTIONS(95),
     [anon_sym_spawn] = ACTIONS(95),
@@ -2131,7 +2131,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_back] = ACTIONS(101),
     [anon_sym_kitkat] = ACTIONS(101),
     [anon_sym_next] = ACTIONS(101),
-    [anon_sym_decide] = ACTIONS(101),
+    [anon_sym_choose] = ACTIONS(101),
     [anon_sym_when] = ACTIONS(101),
     [anon_sym_otherwise] = ACTIONS(101),
     [anon_sym_spawn] = ACTIONS(101),
@@ -2171,7 +2171,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_back] = ACTIONS(105),
     [anon_sym_kitkat] = ACTIONS(105),
     [anon_sym_next] = ACTIONS(105),
-    [anon_sym_decide] = ACTIONS(105),
+    [anon_sym_choose] = ACTIONS(105),
     [anon_sym_when] = ACTIONS(105),
     [anon_sym_otherwise] = ACTIONS(105),
     [anon_sym_spawn] = ACTIONS(105),
@@ -2210,7 +2210,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_back] = ACTIONS(109),
     [anon_sym_kitkat] = ACTIONS(109),
     [anon_sym_next] = ACTIONS(109),
-    [anon_sym_decide] = ACTIONS(109),
+    [anon_sym_choose] = ACTIONS(109),
     [anon_sym_when] = ACTIONS(109),
     [anon_sym_otherwise] = ACTIONS(109),
     [anon_sym_spawn] = ACTIONS(109),
@@ -2249,7 +2249,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_back] = ACTIONS(113),
     [anon_sym_kitkat] = ACTIONS(113),
     [anon_sym_next] = ACTIONS(113),
-    [anon_sym_decide] = ACTIONS(113),
+    [anon_sym_choose] = ACTIONS(113),
     [anon_sym_when] = ACTIONS(113),
     [anon_sym_otherwise] = ACTIONS(113),
     [anon_sym_spawn] = ACTIONS(113),
@@ -2288,7 +2288,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_back] = ACTIONS(117),
     [anon_sym_kitkat] = ACTIONS(117),
     [anon_sym_next] = ACTIONS(117),
-    [anon_sym_decide] = ACTIONS(117),
+    [anon_sym_choose] = ACTIONS(117),
     [anon_sym_when] = ACTIONS(117),
     [anon_sym_otherwise] = ACTIONS(117),
     [anon_sym_spawn] = ACTIONS(117),
@@ -2327,7 +2327,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_back] = ACTIONS(121),
     [anon_sym_kitkat] = ACTIONS(121),
     [anon_sym_next] = ACTIONS(121),
-    [anon_sym_decide] = ACTIONS(121),
+    [anon_sym_choose] = ACTIONS(121),
     [anon_sym_when] = ACTIONS(121),
     [anon_sym_otherwise] = ACTIONS(121),
     [anon_sym_spawn] = ACTIONS(121),
@@ -2366,7 +2366,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_back] = ACTIONS(125),
     [anon_sym_kitkat] = ACTIONS(125),
     [anon_sym_next] = ACTIONS(125),
-    [anon_sym_decide] = ACTIONS(125),
+    [anon_sym_choose] = ACTIONS(125),
     [anon_sym_when] = ACTIONS(125),
     [anon_sym_otherwise] = ACTIONS(125),
     [anon_sym_spawn] = ACTIONS(125),
@@ -2405,7 +2405,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_back] = ACTIONS(129),
     [anon_sym_kitkat] = ACTIONS(129),
     [anon_sym_next] = ACTIONS(129),
-    [anon_sym_decide] = ACTIONS(129),
+    [anon_sym_choose] = ACTIONS(129),
     [anon_sym_when] = ACTIONS(129),
     [anon_sym_otherwise] = ACTIONS(129),
     [anon_sym_spawn] = ACTIONS(129),
@@ -2444,7 +2444,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_back] = ACTIONS(133),
     [anon_sym_kitkat] = ACTIONS(133),
     [anon_sym_next] = ACTIONS(133),
-    [anon_sym_decide] = ACTIONS(133),
+    [anon_sym_choose] = ACTIONS(133),
     [anon_sym_when] = ACTIONS(133),
     [anon_sym_otherwise] = ACTIONS(133),
     [anon_sym_spawn] = ACTIONS(133),
@@ -2483,7 +2483,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_back] = ACTIONS(137),
     [anon_sym_kitkat] = ACTIONS(137),
     [anon_sym_next] = ACTIONS(137),
-    [anon_sym_decide] = ACTIONS(137),
+    [anon_sym_choose] = ACTIONS(137),
     [anon_sym_when] = ACTIONS(137),
     [anon_sym_otherwise] = ACTIONS(137),
     [anon_sym_spawn] = ACTIONS(137),
@@ -2522,7 +2522,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_back] = ACTIONS(141),
     [anon_sym_kitkat] = ACTIONS(141),
     [anon_sym_next] = ACTIONS(141),
-    [anon_sym_decide] = ACTIONS(141),
+    [anon_sym_choose] = ACTIONS(141),
     [anon_sym_when] = ACTIONS(141),
     [anon_sym_otherwise] = ACTIONS(141),
     [anon_sym_spawn] = ACTIONS(141),
@@ -2561,7 +2561,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_back] = ACTIONS(145),
     [anon_sym_kitkat] = ACTIONS(145),
     [anon_sym_next] = ACTIONS(145),
-    [anon_sym_decide] = ACTIONS(145),
+    [anon_sym_choose] = ACTIONS(145),
     [anon_sym_when] = ACTIONS(145),
     [anon_sym_otherwise] = ACTIONS(145),
     [anon_sym_spawn] = ACTIONS(145),
@@ -2600,7 +2600,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [anon_sym_back] = ACTIONS(149),
     [anon_sym_kitkat] = ACTIONS(149),
     [anon_sym_next] = ACTIONS(149),
-    [anon_sym_decide] = ACTIONS(149),
+    [anon_sym_choose] = ACTIONS(149),
     [anon_sym_when] = ACTIONS(149),
     [anon_sym_otherwise] = ACTIONS(149),
     [anon_sym_spawn] = ACTIONS(149),

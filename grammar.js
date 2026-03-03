@@ -78,7 +78,7 @@ module.exports = grammar({
         "back",
         "kitkat",
         "next",
-        "decide",
+        "choose",
         "when",
         "otherwise",
         "spawn",
