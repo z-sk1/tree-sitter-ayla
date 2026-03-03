@@ -525,6 +525,10 @@
     "named": true
   },
   {
+    "type": "import",
+    "named": false
+  },
+  {
     "type": "in",
     "named": false
   },
