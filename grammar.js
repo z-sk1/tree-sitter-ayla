@@ -94,6 +94,7 @@ module.exports = grammar({
 
     binary_expression: ($) =>
       prec.left(
+        1,
         seq(
           field("left", $.expression),
           field(
@@ -123,11 +124,22 @@ module.exports = grammar({
         ),
       ),
 
+    unary_expression: ($) =>
+      prec.left(
+        2,
+        seq(
+          field("operator", choice("!", "-", "~")),
+          field("operand", $.expression),
+        ),
+      ),
+
     expression: ($) =>
+      choice($.binary_expression, $._primary_expression, $.unary_expression),
+
+    _primary_expression: ($) =>
       choice(
         $.keyword,
         $.primitive_type,
-        $.binary_expression,
         $.call_expression,
         $.member_expression,
         $.identifier,
