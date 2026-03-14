@@ -92,10 +92,42 @@ module.exports = grammar({
     primitive_type: ($) =>
       choice("int", "float", "string", "bool", "thing", "error"),
 
+    binary_expression: ($) =>
+      prec.left(
+        seq(
+          field("left", $.expression),
+          field(
+            "operator",
+            choice(
+              "+",
+              "-",
+              "*",
+              "/",
+              "%",
+              "==",
+              "!=",
+              "<",
+              ">",
+              "<=",
+              ">=",
+              "&&",
+              "||",
+              "|",
+              "&",
+              "^",
+              "<<",
+              ">>",
+            ),
+          ),
+          field("right", $.expression),
+        ),
+      ),
+
     expression: ($) =>
       choice(
         $.keyword,
         $.primitive_type,
+        $.binary_expression,
         $.call_expression,
         $.member_expression,
         $.identifier,
