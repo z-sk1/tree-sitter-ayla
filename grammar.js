@@ -96,7 +96,14 @@ module.exports = grammar({
       prec.left(
         1,
         seq(
-          field("left", $.expression),
+          field(
+            "left",
+            choice(
+              $.binary_expression,
+              $.unary_expression,
+              $._primary_expression,
+            ),
+          ),
           field(
             "operator",
             choice(
@@ -120,21 +127,21 @@ module.exports = grammar({
               ">>",
             ),
           ),
-          field("right", $.expression),
+          field("right", choice($.unary_expression, $._primary_expression)),
         ),
       ),
 
     unary_expression: ($) =>
-      prec.left(
-        2,
+      prec(
+        3,
         seq(
           field("operator", choice("!", "-", "~")),
-          field("operand", $.expression),
+          field("operand", $.unary_expression),
         ),
       ),
 
     expression: ($) =>
-      choice($.binary_expression, $._primary_expression, $.unary_expression),
+      choice($.binary_expression, $.unary_expression, $._primary_expression),
 
     _primary_expression: ($) =>
       choice(
