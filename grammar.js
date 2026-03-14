@@ -92,56 +92,7 @@ module.exports = grammar({
     primitive_type: ($) =>
       choice("int", "float", "string", "bool", "thing", "error"),
 
-    binary_expression: ($) =>
-      prec.left(
-        1,
-        seq(
-          field(
-            "left",
-            choice(
-              $.binary_expression,
-              $.unary_expression,
-              $._primary_expression,
-            ),
-          ),
-          field(
-            "operator",
-            choice(
-              "+",
-              "-",
-              "*",
-              "/",
-              "%",
-              "==",
-              "!=",
-              "<",
-              ">",
-              "<=",
-              ">=",
-              "&&",
-              "||",
-              "|",
-              "&",
-              "^",
-              "<<",
-              ">>",
-            ),
-          ),
-          field("right", choice($.unary_expression, $._primary_expression)),
-        ),
-      ),
-
-    unary_expression: ($) =>
-      prec(
-        3,
-        seq(
-          field("operator", choice("!", "-", "~")),
-          field("operand", $.unary_expression),
-        ),
-      ),
-
-    expression: ($) =>
-      choice($.binary_expression, $.unary_expression, $._primary_expression),
+    expression: ($) => choice($._primary_expression),
 
     _primary_expression: ($) =>
       choice(
