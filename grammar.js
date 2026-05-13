@@ -65,8 +65,8 @@ module.exports = grammar({
 
     keyword: ($) =>
       choice(
-        "egg",
-        "rock",
+        "say",
+        "keep",
         "import",
         "enum",
         "struct",
@@ -74,26 +74,52 @@ module.exports = grammar({
         "type",
         "ayla",
         "elen",
-        "four",
-        "why",
+        "for",
+        "while",
         "back",
         "kitkat",
         "next",
         "choose",
+        "select",
         "when",
         "otherwise",
-        "spawn",
+        "start",
         "with",
         "it",
-        "in",
+        "chan",
         "range",
       ),
 
     primitive_type: ($) =>
       choice("int", "float", "string", "bool", "thing", "error"),
 
+    operator: ($) =>
+      choice(
+        "+",
+        "-",
+        "*",
+        "/",
+        "%",
+        "&&",
+        "||",
+        "|",
+        "&",
+        "^",
+        "<<",
+        ">>",
+        "=",
+        "==",
+        "!=",
+        "!",
+        "<",
+        ">",
+        "<=",
+        ">=",
+      ),
+
     expression: ($) =>
       choice(
+        $.operator,
         $.keyword,
         $.primitive_type,
         $.call_expression,
