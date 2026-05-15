@@ -2,21 +2,30 @@ module.exports = grammar({
   name: "ayla",
 
   extras: ($) => [/\s/, $.comment],
-
   word: ($) => $.identifier,
 
   rules: {
     source_file: ($) => repeat($._statement),
 
     _statement: ($) =>
-      choice($.struct_decl, $.function_decl, $.expression, $.assignment),
+      choice(
+        $.struct_decl,
+        $.function_decl,
+        $.assignment,
+        $.expression_statement,
+      ),
+
+    expression_statement: ($) => $.expression,
 
     assignment: ($) =>
-      seq(field("left", $.identifier), "=", field("right", $.expression)),
+      prec(
+        1,
+        seq(field("left", $.identifier), "=", field("right", $.expression)),
+      ),
 
     struct_decl: ($) =>
       seq(
-        field("keyword", "struct"),
+        "struct",
         field("name", $.type_identifier),
         "{",
         repeat($.struct_field),
@@ -46,82 +55,27 @@ module.exports = grammar({
       ),
 
     return_type: ($) =>
-      seq("(", field("type", choice($.type_identifier, $.primitive_type)), ")"),
+      seq("(", choice($.type_identifier, $.primitive_type), ")"),
 
     function_decl: ($) =>
       seq(
-        field("keyword", "fun"),
-        optional(field("receiver", $.receiver)),
+        "fun",
+        optional($.receiver),
         field("name", $.identifier),
         "(",
         optional($.parameter_list),
         ")",
-        optional(field("return_type", $.return_type)),
+        optional($.return_type),
         $.block,
       ),
 
-    block: ($) =>
-      seq(field("open", "{"), repeat($._statement), field("close", "}")),
-
-    keyword: ($) =>
-      choice(
-        "say",
-        "keep",
-        "import",
-        "enum",
-        "struct",
-        "map",
-        "type",
-        "ayla",
-        "elen",
-        "for",
-        "while",
-        "back",
-        "kitkat",
-        "next",
-        "choose",
-        "select",
-        "when",
-        "otherwise",
-        "start",
-        "with",
-        "it",
-        "chan",
-        "range",
-      ),
+    block: ($) => seq("{", repeat($._statement), "}"),
 
     primitive_type: ($) =>
       choice("int", "float", "string", "bool", "thing", "error"),
 
-    operator: ($) =>
-      choice(
-        "+",
-        "-",
-        "*",
-        "/",
-        "%",
-        "&&",
-        "||",
-        "|",
-        "&",
-        "^",
-        "<<",
-        ">>",
-        "=",
-        "==",
-        "!=",
-        "!",
-        "<",
-        ">",
-        "<=",
-        ">=",
-      ),
-
     expression: ($) =>
       choice(
-        $.operator,
-        $.keyword,
-        $.primitive_type,
         $.call_expression,
         $.member_expression,
         $.identifier,
@@ -143,18 +97,30 @@ module.exports = grammar({
         ),
       ),
 
+    operator: ($) =>
+      choice(
+        "+",
+        "-",
+        "*",
+        "/",
+        "%",
+        "==",
+        "!=",
+        "<",
+        ">",
+        "<=",
+        ">=",
+        "=",
+        ":=",
+      ),
+
     argument_list: ($) => seq($.expression, repeat(seq(",", $.expression))),
 
     identifier: ($) => /[a-z_][a-zA-Z0-9_]*/,
-
     type_identifier: ($) => /[A-Z][a-zA-Z0-9_]*/,
-
     number: ($) => /\d+/,
-
     string: ($) => /"[^"]*"/,
-
     boolean: ($) => choice("yes", "no"),
-
     nil: ($) => "nil",
 
     comment: ($) =>

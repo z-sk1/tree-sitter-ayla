@@ -43,28 +43,7 @@
   {
     "type": "block",
     "named": true,
-    "fields": {
-      "close": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "}",
-            "named": false
-          }
-        ]
-      },
-      "open": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "{",
-            "named": false
-          }
-        ]
-      }
-    },
+    "fields": {},
     "children": {
       "multiple": true,
       "required": false,
@@ -74,7 +53,7 @@
           "named": true
         },
         {
-          "type": "expression",
+          "type": "expression_statement",
           "named": true
         },
         {
@@ -140,10 +119,6 @@
           "named": true
         },
         {
-          "type": "keyword",
-          "named": true
-        },
-        {
           "type": "member_expression",
           "named": true
         },
@@ -156,15 +131,22 @@
           "named": true
         },
         {
-          "type": "operator",
-          "named": true
-        },
-        {
-          "type": "primitive_type",
-          "named": true
-        },
-        {
           "type": "string",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "expression_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "expression",
           "named": true
         }
       ]
@@ -174,42 +156,12 @@
     "type": "function_decl",
     "named": true,
     "fields": {
-      "keyword": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "fun",
-            "named": false
-          }
-        ]
-      },
       "name": {
         "multiple": false,
         "required": true,
         "types": [
           {
             "type": "identifier",
-            "named": true
-          }
-        ]
-      },
-      "receiver": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "receiver",
-            "named": true
-          }
-        ]
-      },
-      "return_type": {
-        "multiple": false,
-        "required": false,
-        "types": [
-          {
-            "type": "return_type",
             "named": true
           }
         ]
@@ -226,14 +178,17 @@
         {
           "type": "parameter_list",
           "named": true
+        },
+        {
+          "type": "receiver",
+          "named": true
+        },
+        {
+          "type": "return_type",
+          "named": true
         }
       ]
     }
-  },
-  {
-    "type": "keyword",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "member_expression",
@@ -260,11 +215,6 @@
         ]
       }
     }
-  },
-  {
-    "type": "operator",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "parameter",
@@ -349,21 +299,20 @@
   {
     "type": "return_type",
     "named": true,
-    "fields": {
-      "type": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "primitive_type",
-            "named": true
-          },
-          {
-            "type": "type_identifier",
-            "named": true
-          }
-        ]
-      }
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "primitive_type",
+          "named": true
+        },
+        {
+          "type": "type_identifier",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -380,7 +329,7 @@
           "named": true
         },
         {
-          "type": "expression",
+          "type": "expression_statement",
           "named": true
         },
         {
@@ -398,16 +347,6 @@
     "type": "struct_decl",
     "named": true,
     "fields": {
-      "keyword": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "struct",
-            "named": false
-          }
-        ]
-      },
       "name": {
         "multiple": false,
         "required": true,
@@ -461,26 +400,6 @@
     }
   },
   {
-    "type": "!",
-    "named": false
-  },
-  {
-    "type": "!=",
-    "named": false
-  },
-  {
-    "type": "%",
-    "named": false
-  },
-  {
-    "type": "&",
-    "named": false
-  },
-  {
-    "type": "&&",
-    "named": false
-  },
-  {
     "type": "(",
     "named": false
   },
@@ -489,19 +408,7 @@
     "named": false
   },
   {
-    "type": "*",
-    "named": false
-  },
-  {
-    "type": "+",
-    "named": false
-  },
-  {
     "type": ",",
-    "named": false
-  },
-  {
-    "type": "-",
     "named": false
   },
   {
@@ -509,59 +416,11 @@
     "named": false
   },
   {
-    "type": "/",
-    "named": false
-  },
-  {
-    "type": "<",
-    "named": false
-  },
-  {
-    "type": "<<",
-    "named": false
-  },
-  {
-    "type": "<=",
-    "named": false
-  },
-  {
     "type": "=",
     "named": false
   },
   {
-    "type": "==",
-    "named": false
-  },
-  {
-    "type": ">",
-    "named": false
-  },
-  {
-    "type": ">=",
-    "named": false
-  },
-  {
-    "type": ">>",
-    "named": false
-  },
-  {
-    "type": "^",
-    "named": false
-  },
-  {
-    "type": "ayla",
-    "named": false
-  },
-  {
-    "type": "back",
-    "named": false
-  },
-  {
     "type": "bool",
-    "named": false
-  },
-  {
-    "type": "choose",
     "named": false
   },
   {
@@ -570,27 +429,11 @@
     "extra": true
   },
   {
-    "type": "egg",
-    "named": false
-  },
-  {
-    "type": "elen",
-    "named": false
-  },
-  {
-    "type": "enum",
-    "named": false
-  },
-  {
     "type": "error",
     "named": false
   },
   {
     "type": "float",
-    "named": false
-  },
-  {
-    "type": "four",
     "named": false
   },
   {
@@ -602,31 +445,7 @@
     "named": true
   },
   {
-    "type": "import",
-    "named": false
-  },
-  {
-    "type": "in",
-    "named": false
-  },
-  {
     "type": "int",
-    "named": false
-  },
-  {
-    "type": "it",
-    "named": false
-  },
-  {
-    "type": "kitkat",
-    "named": false
-  },
-  {
-    "type": "map",
-    "named": false
-  },
-  {
-    "type": "next",
     "named": false
   },
   {
@@ -640,22 +459,6 @@
   {
     "type": "number",
     "named": true
-  },
-  {
-    "type": "otherwise",
-    "named": false
-  },
-  {
-    "type": "range",
-    "named": false
-  },
-  {
-    "type": "rock",
-    "named": false
-  },
-  {
-    "type": "spawn",
-    "named": false
   },
   {
     "type": "string",
@@ -674,24 +477,8 @@
     "named": false
   },
   {
-    "type": "type",
-    "named": false
-  },
-  {
     "type": "type_identifier",
     "named": true
-  },
-  {
-    "type": "when",
-    "named": false
-  },
-  {
-    "type": "why",
-    "named": false
-  },
-  {
-    "type": "with",
-    "named": false
   },
   {
     "type": "yes",
@@ -699,14 +486,6 @@
   },
   {
     "type": "{",
-    "named": false
-  },
-  {
-    "type": "|",
-    "named": false
-  },
-  {
-    "type": "||",
     "named": false
   },
   {
