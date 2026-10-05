@@ -1,0 +1,32 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "ayla",
+      "camelcase": "Ayla",
+      "title": "Ayla",
+      "scope": "source.ayla",
+      "file-types": [
+        "ayl",
+        "ayla"
+      ],
+      "injection-regex": "^ayla$",
+      "class-name": "TreeSitterAyla"
+    }
+  ],
+  "metadata": {
+    "version": "0.0.2",
+    "license": "MIT",
+    "description": "Ayla programming language",
+    "authors": [
+      {
+        "name": "Ziad Skafi",
+        "email": "ziad.skafi12@gmail.com",
+        "url": "https://z-sk1.github.io"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/z-sk1/tree-sitter-ayla"
+    }
+  }
+}
