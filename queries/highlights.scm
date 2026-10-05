@@ -3,8 +3,6 @@
 (member_expression
   property: (identifier) @variable.other.member)
 
-(keyword) @keyword
-
 (boolean) @constant.builtin
 (nil) @constant.builtin
 
