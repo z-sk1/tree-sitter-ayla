@@ -62,3 +62,29 @@
 
 ; Comments
 (comment) @comment
+
+
+"fun" @keyword
+"struct" @keyword
+"ayla" @keyword
+"elen" @keyword
+"for" @keyword
+"while" @keyword
+"give" @keyword
+"import" @keyword
+"defer" @keyword
+"start" @keyword
+"choose" @keyword
+"select" @keyword
+"when" @keyword
+"otherwise" @keyword
+"snap" @keyword
+"say" @keyword
+"keep" @keyword
+"with" @keyword
+"map" @keyword
+"range" @keyword
+"interface" @keyword
+"type" @keyword
+"enum" @keyword
+"chan" @keyword

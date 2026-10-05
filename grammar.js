@@ -1,7 +1,11 @@
 module.exports = grammar({
   name: "ayla",
 
-  extras: ($) => [/\s/, $.comment],
+  extras: ($) => [
+    /\s/,
+    $.comment,
+  ],
+
   word: ($) => $.identifier,
 
   rules: {
@@ -18,9 +22,10 @@ module.exports = grammar({
     expression_statement: ($) => $.expression,
 
     assignment: ($) =>
-      prec(
-        1,
-        seq(field("left", $.identifier), "=", field("right", $.expression)),
+      seq(
+        field("left", $.identifier),
+        "=",
+        field("right", $.expression),
       ),
 
     struct_decl: ($) =>
@@ -35,27 +40,8 @@ module.exports = grammar({
     struct_field: ($) =>
       seq(
         field("name", $.identifier),
-        field("type", choice($.type_identifier, $.primitive_type)),
+        field("type", choice($.primitive_type, $.type_identifier)),
       ),
-
-    parameter: ($) =>
-      seq(
-        field("name", $.identifier),
-        optional(field("type", choice($.type_identifier, $.primitive_type))),
-      ),
-
-    parameter_list: ($) => seq($.parameter, repeat(seq(",", $.parameter))),
-
-    receiver: ($) =>
-      seq(
-        "(",
-        field("name", $.identifier),
-        field("type", choice($.type_identifier, $.primitive_type)),
-        ")",
-      ),
-
-    return_type: ($) =>
-      seq("(", choice($.type_identifier, $.primitive_type), ")"),
 
     function_decl: ($) =>
       seq(
@@ -69,15 +55,43 @@ module.exports = grammar({
         $.block,
       ),
 
-    block: ($) => seq("{", repeat($._statement), "}"),
+    receiver: ($) =>
+      seq(
+        "(",
+        field("name", $.identifier),
+        field("type", choice($.primitive_type, $.type_identifier)),
+        ")",
+      ),
 
-    primitive_type: ($) =>
-      choice("int", "float", "string", "bool", "thing", "error"),
+    parameter_list: ($) =>
+      seq($.parameter, repeat(seq(",", $.parameter))),
+
+    parameter: ($) =>
+      seq(
+        field("name", $.identifier),
+        optional(field("type", choice($.primitive_type, $.type_identifier))),
+      ),
+
+    return_type: ($) =>
+      seq(
+        "(",
+        field("type", choice($.primitive_type, $.type_identifier)),
+        ")",
+      ),
+
+    block: ($) =>
+      seq(
+        "{",
+        repeat($._statement),
+        "}",
+      ),
 
     expression: ($) =>
       choice(
+        $.binary_expression,
         $.call_expression,
         $.member_expression,
+        $.parenthesized_expression,
         $.identifier,
         $.number,
         $.string,
@@ -85,16 +99,43 @@ module.exports = grammar({
         $.nil,
       ),
 
-    call_expression: ($) =>
-      seq(field("function", $.identifier), "(", optional($.argument_list), ")"),
+    parenthesized_expression: ($) =>
+      seq("(", $.expression, ")"),
+
+    binary_expression: ($) =>
+      prec.left(
+        seq(
+          field("left", $.expression),
+          field("operator", $.operator),
+          field("right", $.expression),
+        ),
+      ),
 
     member_expression: ($) =>
       prec.left(
+        2,
         seq(
           field("object", $.expression),
           ".",
           field("property", $.identifier),
         ),
+      ),
+
+    call_expression: ($) =>
+      prec(
+        3,
+        seq(
+          field("function", $.expression),
+          "(",
+          optional($.argument_list),
+          ")",
+        ),
+      ),
+
+    argument_list: ($) =>
+      seq(
+        $.expression,
+        repeat(seq(",", $.expression)),
       ),
 
     operator: ($) =>
@@ -110,22 +151,34 @@ module.exports = grammar({
         ">",
         "<=",
         ">=",
-        "=",
-        ":=",
       ),
 
-    argument_list: ($) => seq($.expression, repeat(seq(",", $.expression))),
+    primitive_type: ($) =>
+      choice(
+        "int",
+        "float",
+        "string",
+        "bool",
+        "thing",
+        "error",
+      ),
 
     identifier: ($) => /[a-z_][a-zA-Z0-9_]*/,
+
     type_identifier: ($) => /[A-Z][a-zA-Z0-9_]*/,
+
     number: ($) => /\d+/,
+
     string: ($) => /"[^"]*"/,
+
     boolean: ($) => choice("yes", "no"),
+
     nil: ($) => "nil",
 
     comment: ($) =>
-      token(
-        choice(seq("//", /.*/), seq("/*", /[^*]*\*+([^/*][^*]*\*+)*/, "/")),
-      ),
+      token(choice(
+        seq("//", /.*/),
+        seq("/*", /[^*]*\*+([^/*][^*]*\*+)*/, "/"),
+      )),
   },
 });
